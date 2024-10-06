@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ajax</title>
+</head>
+<body>
+  <script>
+    function loadContent()
+    {
+      var xml = new XMLHttpRequest();
+      xml.open("GET","file.txt",true);
+      xml.onreadystatechange = function() { 
+                if (xml.readyState == 4 && xml.status == 200) {
+                    document.getElementById("result").innerHTML = xml.responseText;
+                }
+          };
+      xml.send();
+    }
+  </script>
+  <div id="result" style="text-align: center; font-size: x-large;"></div>
+  <button onclick="loadContent()">CLICK HERE</button>
+</body>
+</html>
