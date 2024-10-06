@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Suggestion</title>
+</head>
+<body>
+  <script>
+   function Suggestions()
+   {
+    var input = document.getElementById("name").value;
+    if(input.length===0){
+      document.getElementById("result").innerHTML="";
+      return;
+    }
+    var xml = new XMLHttpRequest();
+    xml.onreadystatechange=function(){
+      if(xml.readyState==4 && xml.status==200)
+    {
+      document.getElementById("result").innerHTML=xml.responseText;
+    }
+    };
+    xml.open("GET","Suggestions?name="+input,true);
+    xml.send();
+   } 
+  </script>
+   <form>
+    <label for="name">Enter the Student Name : </label>
+    <input type="text" name="name" id="name" onkeyup="Suggestions()">
+   </form>
+   <div id="result">
+
+   </div>
+</body>
+</html>
